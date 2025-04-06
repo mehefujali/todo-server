@@ -6,9 +6,11 @@ const Todo = new mongoose.model("Todo", todoSchema);
 //// Get all tha todo
 
 router.get("/", async (req, res) => {
-  res.send({
-    status: true,
-  });
+  try{
+    
+  }catch{
+
+  }
 });
 
 // Get a todo by id
@@ -22,7 +24,7 @@ router.post('/', async (req, res) => {
         const newTodo = new Todo(req.body);
     
         const savedTodo = await newTodo.save();
-        res.status(200).json({
+        res.status(201).json({
           message: 'Todo was inserted successfully',
           data: savedTodo
         });
