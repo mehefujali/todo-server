@@ -7,12 +7,12 @@ const Todo = new mongoose.model("Todo", todoSchema);
 
 router.get("/", async (req, res) => {
   try {
-    const todos = await Todo.find()
+    const todos = await Todo.find();
     res.status(200).json({
-      message:'Data fetch success',
-      data: todos
-    })
-  } catch(err) {
+      message: "Data fetch success",
+      data: todos,
+    });
+  } catch (err) {
     res.status(500).json({
       error: "Internal server error",
       details: err.message,
@@ -23,13 +23,13 @@ router.get("/", async (req, res) => {
 // Get a todo by id
 
 router.get("/:id", async (req, res) => {
-  try{
-    const todo = await Todo.findById(req.params.id)
+  try {
+    const todo = await Todo.findById(req.params.id);
     res.status(200).json({
-      message:'Data fetch success',
-      data: todo
-    })
-  }catch (err) {
+      message: "Data fetch success",
+      data: todo,
+    });
+  } catch (err) {
     res.status(500).json({
       error: "Internal server error",
       details: err.message,
@@ -120,6 +120,20 @@ router.put("/:id", async (req, res) => {
 });
 
 //Delete todo
-router.delete("/:id", async (req, res) => {});
+router.delete("/:id", async (req, res) => {
+  try {
+    const result = await Todo.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({
+      message: "Data updated",
+      data: result,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: "Internal server error",
+      details: err.message,
+    });
+  }
+});
 
 module.exports = router;
