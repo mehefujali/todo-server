@@ -52,17 +52,40 @@ router.post("/all", async (req, res) => {
 
 // Put todo
 router.put("/:id", async (req, res) => {
+  // try {
+  //   const updatededData = req.body
+  //   const result = await Todo.updateOne(
+  //     { _id: req.params.id },
+  //     {
+  //       $set: {
+  //          ...updatededData
+  //       },
+  //     }
+  //   );
+  //   res.status(200).json({
+  //     message: "data updated",
+  //     data: result,
+  //   });
+  // } catch (err) {
+  //   res.status(500).json({
+  //     error: "Internal server error",
+  //     details: err.message,
+  //   });
+  // }
   try {
-    const result = await Todo.updateOne(
-      { _id: req.params.id },
+    const updatededData = req.body;
+    const result = await Todo.findByIdAndUpdate(
+      req.params.id,
       {
         $set: {
-          status: "inactive",
+          ...updatededData,
         },
-      }
+      },
+      { new: true }
     );
+
     res.status(200).json({
-      message: "data updated",
+      message: "Data updated",
       data: result,
     });
   } catch (err) {
