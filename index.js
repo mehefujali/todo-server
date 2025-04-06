@@ -3,31 +3,19 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 4000;
-const todoHandler = require('./routeHandler/todoHandler');
+const todoHandler = require("./routeHandler/todoHandler");
 app.use(cors());
 app.use(express.json());
 
 // Database connection with mongoose
 
-async function connectDB() {
-  try {
-    await mongoose.connect("mongodb://localhost/todo");
-    console.log("Success");
-  } catch (err) {
-    console.log(err); 
-  }
-}
+mongoose.connect('mongodb://localhost:27017/todo')
+.then(() => console.log('MongoDB connected successfully'))
+.catch((err) => console.log('MongoDB connection error:', err));
 
-connectDB();
+//
 
-
-
-
-// 
-
-app.use('/todo', todoHandler)
-
-
+app.use("/todo", todoHandler);
 
 app.get("/", (req, res) => {
   res.send(`<div >

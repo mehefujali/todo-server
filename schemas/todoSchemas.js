@@ -8,7 +8,7 @@ const todoSchemas = mongoose.Schema({
   description: String,
   status: {
     type: String,
-    enum:['acitve' , 'inactive']
+    enum:['active' , 'inactive']
   },
   date : {
       type : Date ,
