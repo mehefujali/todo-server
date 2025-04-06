@@ -6,11 +6,8 @@ const Todo = new mongoose.model("Todo", todoSchema);
 //// Get all tha todo
 
 router.get("/", async (req, res) => {
-  try{
-    
-  }catch{
-
-  }
+  try {
+  } catch {}
 });
 
 // Get a todo by id
@@ -19,28 +16,39 @@ router.get("/:id", async (req, res) => {});
 
 //Post todo
 
-router.post('/', async (req, res) => {
-      try {
-        const newTodo = new Todo(req.body);
-    
-        const savedTodo = await newTodo.save();
-        res.status(201).json({
-          message: 'Todo was inserted successfully',
-          data: savedTodo
-        });
-      } catch (err) {
-        console.error('Error during saving:', err);
-        res.status(500).json({
-          error: 'Internal server error',
-          details: err.message
-        });
-      }
+router.post("/", async (req, res) => {
+  try {
+    const newTodo = new Todo(req.body);
+
+    const savedTodo = await newTodo.save();
+    res.status(201).json({
+      message: "Todo was inserted successfully",
+      data: savedTodo,
     });
-    
+  } catch (err) {
+    res.status(500).json({
+      error: "Internal server error",
+      details: err.message,
+    });
+  }
+});
 
 //Post Multiple todo
 
-router.post("/all", async (req, res) => {});
+router.post("/all", async (req, res) => {
+  try {
+    const result = await Todo.insertMany(req.body);
+    res.status(200).json({
+      message: "Todos was inserted successfully",
+      data: result,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: "Internal server error",
+      details: err.message,
+    });
+  }
+});
 
 // Put todo
 router.put("/:id", async (req, res) => {});
