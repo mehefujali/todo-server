@@ -7,12 +7,35 @@ const Todo = new mongoose.model("Todo", todoSchema);
 
 router.get("/", async (req, res) => {
   try {
-  } catch {}
+    const todos = await Todo.find()
+    res.status(200).json({
+      message:'Data fetch success',
+      data: todos
+    })
+  } catch(err) {
+    res.status(500).json({
+      error: "Internal server error",
+      details: err.message,
+    });
+  }
 });
 
 // Get a todo by id
 
-router.get("/:id", async (req, res) => {});
+router.get("/:id", async (req, res) => {
+  try{
+    const todo = await Todo.findById(req.params.id)
+    res.status(200).json({
+      message:'Data fetch success',
+      data: todo
+    })
+  }catch (err) {
+    res.status(500).json({
+      error: "Internal server error",
+      details: err.message,
+    });
+  }
+});
 
 //Post todo
 
