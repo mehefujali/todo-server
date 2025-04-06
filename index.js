@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 4000;
-
+const todoHandler = require('./routeHandler/todoHandler');
 app.use(cors());
 app.use(express.json());
 
@@ -20,6 +20,12 @@ async function connectDB() {
 
 connectDB();
 
+
+
+
+// 
+
+app.use('/todo', todoHandler)
 
 
 

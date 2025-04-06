@@ -5,7 +5,9 @@ const router = express.Router()
 //// Get all tha todo 
 
 router.get('/' , async(req,res)=>{
-
+ res.send({
+      status:true
+ })
 })
 
 
@@ -23,6 +25,18 @@ router.post('/' , async (req,res)=>{
 
 //Post Multiple todo 
 
-router.post('/' , async (req,res)=>{
+router.post('/all' , async (req,res)=>{
 
 })
+
+// Put todo 
+router.put('/:id' , async(req,res)=>{
+
+})
+
+//Delete todo 
+router.delete('/:id' , async(req,res)=>{
+
+})
+
+module.exports = router
