@@ -51,7 +51,27 @@ router.post("/all", async (req, res) => {
 });
 
 // Put todo
-router.put("/:id", async (req, res) => {});
+router.put("/:id", async (req, res) => {
+  try {
+    const result = await Todo.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          status: "inactive",
+        },
+      }
+    );
+    res.status(200).json({
+      message: "data updated",
+      data: result,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: "Internal server error",
+      details: err.message,
+    });
+  }
+});
 
 //Delete todo
 router.delete("/:id", async (req, res) => {});
