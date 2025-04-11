@@ -5,7 +5,7 @@
 This is a simple **Todo Backend API** built using **Node.js**, **Express.js**, and **MongoDB (Mongoose)** following the **MVC pattern**.
 
 ## 🚀 Features
-
+ 
 - Create a todo ✅
 - Get all todos 📋
 - Get todo by ID 🔍
