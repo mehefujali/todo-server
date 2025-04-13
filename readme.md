@@ -8,7 +8,7 @@ This is a simple **Todo Backend API** built using **Node.js**, **Express.js**, a
  
 - Create a todo ✅
 - Get all todos 📋
-- Get todo by ID 🔍
+- Get todo by ID 🔍 
 - Update todo ✏️
 - Delete todo 🗑️
 - Insert multiple todos at once ⚡
