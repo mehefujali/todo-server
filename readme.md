@@ -23,8 +23,8 @@ This is a simple **Todo Backend API** built using **Node.js**, **Express.js**, a
 
 ## 📁 Folder Structure
 
+```
 project-root/
-│
 ├── models/
 │   └── Todo.js
 ├── schemas/
@@ -33,6 +33,7 @@ project-root/
 │   └── todoRoutes.js
 ├── app.js / server.js
 └── package.json
+
 ```
 
 ## ⚙️ Installation & Setup
